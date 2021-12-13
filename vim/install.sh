@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if command -v nvim >/dev/null 2>&1; then
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
