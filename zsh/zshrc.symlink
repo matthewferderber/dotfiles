@@ -3,17 +3,20 @@
 # zmodload zsh/zprof
 
 # shortcut to this dotfiles path is $DOTFILES
-export DOTFILES="$HOME/dev/dotfiles"
+export DOTFILES="$HOME/src/github.com/ferderber/dotfiles"
 
 # your project folder that we can `c [tab]` to
-export PROJECTS="$HOME/dev"
+export PROJECTS="$HOME/src/github.com"
 
 # your default editor
-export EDITOR='vim'
+export EDITOR='nvim'
 export VEDITOR='code'
 
 
 export GPG_TTY=$(tty)
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # all of our zsh files
 typeset -U config_files
@@ -25,7 +28,7 @@ for file in ${(M)config_files:#*/path.zsh}; do
 done
 
 # load antibody plugins
-# source ~/.zsh_plugins.sh
+source ~/.zsh_plugins.sh
 
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
@@ -57,7 +60,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-2.7.2
-eval "$(pyenv init -)"
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+
+[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)

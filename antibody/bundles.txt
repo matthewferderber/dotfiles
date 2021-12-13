@@ -1,0 +1,8 @@
+
+mafredri/zsh-async
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+
+# keep these last
+sindresorhus/pure
+zsh-users/zsh-history-substring-search
