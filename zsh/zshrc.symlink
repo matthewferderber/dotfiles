@@ -65,4 +65,4 @@ export NVM_DIR="$HOME/.nvm"
 if command -v brew >/dev/null 2>&1; then
   export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
   [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
-else
+fi

@@ -80,8 +80,8 @@ bindkey '^e' edit-command-line
 if command -v brew >/dev/null 2>&1 && test -d $(brew --prefix)/opt/fzf/shell; then
 	# shellcheck disable=SC1091
 	. $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
-elif [ -x "$(command -v fzf)" ] then
-	source /usr/share/fzf/shell/key-bindings.bash
+elif [ -x "$(command -v fzf)" ]; then
+	source /usr/share/doc/fzf/examples/key-bindings.zsh
 else
 	bindkey '^R' history-incremental-search-backward
 fi
