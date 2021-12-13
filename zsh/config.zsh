@@ -77,9 +77,11 @@ bindkey '^[[3;5~' backward-delete-word
 bindkey '^e' edit-command-line
 
 # search history with fzf if installed, default otherwise
-if test -d $(brew --prefix)/opt/fzf/shell; then
+if command -v brew >/dev/null 2>&1 && test -d $(brew --prefix)/opt/fzf/shell; then
 	# shellcheck disable=SC1091
 	. $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+elif [ -x "$(command -v fzf)" ] then
+	source /usr/share/fzf/shell/key-bindings.bash
 else
 	bindkey '^R' history-incremental-search-backward
 fi
