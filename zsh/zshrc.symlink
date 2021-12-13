@@ -62,5 +62,7 @@ export NVM_DIR="$HOME/.nvm"
 
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
-export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
-[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+if command -v brew >/dev/null 2>&1; then
+  export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+  [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+else
