@@ -7,8 +7,14 @@
 export DOTFILES="$HOME/dotfiles"
 cd "$DOTFILES" || exit 1
 
+if command -v brew >/dev/null 2>&1; then
+  echo $PATH
+  export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+  [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 # fixes PATH (we could be running from the crontab)
-PATH="$(command -p getconf PATH):/usr/local/bin"
+# PATH="$(command -p getconf PATH):/usr/local/bin"
 
 # load custom config if any
 # shellcheck disable=SC1090
