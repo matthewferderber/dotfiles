@@ -2,3 +2,4 @@ neovim
 htop
 tldr
 tmux
+antidote
